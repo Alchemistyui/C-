@@ -25,13 +25,13 @@ public:
     }
     Employee(string n, int s) {
         name = n;
-        salary = s;
+    salary = s;
         salarySum += s;
     }
-    void showName() {
+void showName() {
         
-        cout<<"name:"<< name<< endl;
-    }
+    cout<<"name:"<< name<< endl;
+}
     void showSalary() {
         cout<< salary<< endl;
     }
