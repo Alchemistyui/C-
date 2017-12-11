@@ -101,7 +101,7 @@ class List {
     Node* head, *tail;
     size_t len;
     
-public:
+    public:
     //List为带头结点的链表
     List () {
         head = new Node;
