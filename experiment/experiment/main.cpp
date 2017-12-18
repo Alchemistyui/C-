@@ -159,15 +159,19 @@ void showDetail(Quadrangle* quad) {
 
 
 
-struct Node {
-    Quadrangle* quadptr;
-    Node* next;
-};
 
 
 class List {
+    
+    struct Node {
+        Quadrangle* quadptr;
+        Node* next;
+    };
+
+    
     Node* head, *tail;
     int len;
+    
     
     public:
     //List为带头结点的链表
@@ -255,6 +259,16 @@ class List {
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "Hello, World!\n";
+   
+    
     return 0;
 }
+
+
+
+
+
+
+
+
+
