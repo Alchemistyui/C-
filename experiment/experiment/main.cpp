@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include <ctime>
 using namespace std;
 
 class List;
@@ -17,8 +18,10 @@ class Quadrangle {
     string name;
     friend class List;
     
+    friend void  checkAnswer(const Quadrangle& quad);
+    
     public:
-    virtual int  area() = 0;
+    virtual double  area() = 0;
     virtual void draw() = 0;
     virtual string what() {
         return name;
@@ -45,11 +48,11 @@ class Parallelogram: public Quadrangle {
     virtual int Height() {
         return height;
     }
-    int  area() {
+    double  area() {
         return width * height;
     }
     void draw() {
-        cout  << " width = " << Width() << " height = " << Height() << endl;
+        cout << name << " width = " << Width() << " height = " << Height() << endl;
     }
     virtual ~Parallelogram() {
         cout << name << " destructed.." << endl;
@@ -67,7 +70,7 @@ class Rect: public Parallelogram {
     int Height() {
         return height;
     }
-    int  area() {
+    double  area() {
         return width * height;
     }
     void draw() {
@@ -88,7 +91,7 @@ class Diamond: public Parallelogram {
     int Height() {
         return height;
     }
-    int  area() {
+    double  area() {
         return width * height;
     }
     void draw() {
@@ -109,7 +112,7 @@ class Square: public Parallelogram {
     int Height() {
         return height;
     }
-    int  area() {
+    double  area() {
         return width * height;
     }
     void draw() {
@@ -140,7 +143,7 @@ class Trapezoid: public Quadrangle {
     virtual int Width2() {
         return width2;
     }
-    int  area() {
+    double  area() {
         return (width+width2) * height / 2;
     }
     void draw() {
@@ -208,13 +211,16 @@ class List {
         tail = tail->next;
         len++;
     }
-    void  traverset(void showDetail(Quadrangle*)) {
+    typedef void (*ACCESSFUN)(Quadrangle *);
+    void  traverset(ACCESSFUN showDetail) {
         Node* p = head->next;
         
         while (p != nullptr) {
             showDetail(p->quadptr);
+             cout << "--------------------" << endl;
             p = p->next;
         }
+       
     }
     
     void  operator[](int index) {
@@ -254,13 +260,61 @@ class List {
 };
 
 
-
+void  getAnswer( Quadrangle& quad) {
+    cout<<"输入其面积计算结果： ";
+    for(;;)
+    {
+        double answer=0.0;
+        cin>>answer;
+        if( answer != quad.area())
+            cout<<"结果错误，请重新计算： ";
+        else
+        {
+            cout<<" 结果正确"<<endl;
+            break;
+        }
+    }
+}
 
 
 int main(int argc, const char * argv[]) {
     // insert code here...
+    List list;
+    int stop = 0;
+    srand(unsigned(time(NULL)));
+    cout<<"学习四边形"<<endl;
    
+    while (stop != 1) {
+        Quadrangle *quad;
+//        int i=(rand() % 2);
+        switch (rand() % 5) {
+            case 0:
+                quad = new Parallelogram("Parallelogram", (rand() % 9) + 1,(rand() % 9) + 1);
+                break;
+            case 1:
+                quad = new Rect("Rectangle", (rand() % 9) + 1,(rand() % 9) + 1);
+                break;
+            case 2:
+                quad = new Diamond("Diamond", (rand() % 9) + 1,(rand() % 9) + 1);
+                break;
+            case 3:
+                quad = new Square("Square",(rand() % 9) + 1,(rand() % 9) + 1);
+                break;
+            default:
+                 quad = new Trapezoid("Trapezoid",(rand() % 9) + 1,(rand() % 9) + 1, (rand() % 9) + 1);
+                break;
+        }
+        quad->draw();
+        list.push_back(*quad);
+        getAnswer(*quad);
+        
+        cout<<"继续学习还是复习？（继续学习的话请输入0，如果是想要复习的话请输入1）: "<<endl;
+        cin >> stop;
+    }
     
+    cout << "复习四边形学习：" << endl;
+    list.traverset(showDetail);
+
     return 0;
 }
 
