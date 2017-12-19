@@ -276,53 +276,52 @@ void  getAnswer( Quadrangle& quad) {
     }
 }
 
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    List list;
-    int stop = 0;
-    srand(unsigned(time(NULL)));
-    cout<<"学习四边形"<<endl;
-   
-    while (stop != 1) {
-        Quadrangle *quad;
-//        int i=(rand() % 2);
-        switch (rand() % 5) {
-            case 0:
-                quad = new Parallelogram("Parallelogram", (rand() % 9) + 1,(rand() % 9) + 1);
-                break;
-            case 1:
-                quad = new Rect("Rectangle", (rand() % 9) + 1,(rand() % 9) + 1);
-                break;
-            case 2:
-                quad = new Diamond("Diamond", (rand() % 9) + 1,(rand() % 9) + 1);
-                break;
-            case 3:
-                quad = new Square("Square",(rand() % 9) + 1,(rand() % 9) + 1);
-                break;
-            default:
-                 quad = new Trapezoid("Trapezoid",(rand() % 9) + 1,(rand() % 9) + 1, (rand() % 9) + 1);
-                break;
-        }
-        quad->draw();
-        list.push_back(*quad);
-        getAnswer(*quad);
-        
-        cout<<"继续学习还是复习？（继续学习的话请输入0，如果是想要复习的话请输入1）: "<<endl;
-        cin >> stop;
-    }
-    
-    cout << "复习四边形学习：" << endl;
-    list.traverset(showDetail);
-
-    return 0;
-}
-
-
-
-
-
-
-
-
-
+//
+//int main(int argc, const char * argv[]) {
+//    // insert code here...
+//    List list;
+//    int stop = 0;
+//    srand(unsigned(time(NULL)));
+//    cout<<"学习四边形"<<endl;
+//   
+//    while (stop != 1) {
+//        Quadrangle *quad;
+//        switch (rand() % 5) {
+//            case 0:
+//                quad = new Parallelogram("Parallelogram", (rand() % 9) + 1,(rand() % 9) + 1);
+//                break;
+//            case 1:
+//                quad = new Rect("Rectangle", (rand() % 9) + 1,(rand() % 9) + 1);
+//                break;
+//            case 2:
+//                quad = new Diamond("Diamond", (rand() % 9) + 1,(rand() % 9) + 1);
+//                break;
+//            case 3:
+//                quad = new Square("Square",(rand() % 9) + 1,(rand() % 9) + 1);
+//                break;
+//            default:
+//                 quad = new Trapezoid("Trapezoid",(rand() % 9) + 1,(rand() % 9) + 1, (rand() % 9) + 1);
+//                break;
+//        }
+//        quad->draw();
+//        list.push_back(*quad);
+//        getAnswer(*quad);
+//        
+//        cout<<"继续学习还是复习？（继续学习的话请输入0，如果是想要复习的话请输入1）: "<<endl;
+//        cin >> stop;
+//    }
+//    
+//    cout << "复习四边形学习：" << endl;
+//    list.traverset(showDetail);
+//
+//    return 0;
+//}
+//
+//
+//
+//
+//
+//
+//
+//
+//

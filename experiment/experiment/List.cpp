@@ -19,7 +19,6 @@ class List {
         Node* next;
     };
     
-    
     Node* head, *tail;
     int len;
     
@@ -153,25 +152,23 @@ public:
 };
 
 
-//int main(int argc, const char * argv[]) {
-//    
-//    List<int> list;
-//    
-//    int i = 1;
-//    list.push_back(i);
-//     int j = 2;
-//     list.push_back(j);
-//    int k = 3;
-//    list.push_back(k);
-//   
-////    list.traverset();
-//    
-//    for (List<int>::Iterator itr = list.begin(); itr != list.end(); ++itr) {
-//
-//        cout << *itr << endl;
-//    }
-//   return 0;
-//}
+int main(int argc, const char * argv[]) {
+    
+    List<int> list;
+    
+    int i = 1;
+    list.push_back(i);
+     int j = 2;
+     list.push_back(j);
+    int k = 3;
+    list.push_back(k);
+   
+    for (List<int>::Iterator itr = list.begin(); itr != list.end(); ++itr) {
+
+        cout << *itr << endl;
+    }
+   return 0;
+}
 
 
 
